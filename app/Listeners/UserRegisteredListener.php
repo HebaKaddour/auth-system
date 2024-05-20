@@ -7,8 +7,6 @@ use App\Events\UserRegistered;
 use App\Models\VerificationCode;
 use Illuminate\Support\Facades\Mail;
 use App\Helpers\VerificationCodeHelper;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UserRegisteredListener
 {

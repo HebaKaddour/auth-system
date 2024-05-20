@@ -35,21 +35,14 @@ return [
             'root' => storage_path('app'),
             'throw' => false,
         ],
-
-        'profile_photo' => [
+        'photos' => [
             'driver' => 'local',
-            'root' => public_path('uploade_photo'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-            'throw' => false,
+            'root' => public_path('photos'),
         ],
 
         'certificate' => [
             'driver' => 'local',
-            'root' =>  public_path('certificate'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-            'throw' => false,
+            'root' => public_path('certificate'),
         ],
 
         'public' => [

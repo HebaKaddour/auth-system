@@ -2,21 +2,27 @@
 
 namespace App\Http\Traits;
 
+use App\Models\User;
+
 
 trait uploadFilesTrait
 {
-    public function uploadProfilePhoto($request,$name,$folder)
-    {
-        $photo_name = $request->file($name)->getClientOriginalName();
-        $request->file($name)->storeAs('uploadeI/',$folder.'/'.$photo_name,'profile_photo');
 
+
+    public function uploadImage($image, $disk, $path)
+    {
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->storeAs($path, $imageName, $disk);
+
+        return $imageName;
     }
 
-    public function uploadCertificate($request,$name,$folder)
+
+    public function uploadfile($file, $disk, $path)
     {
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs($path, $fileName, $disk);
 
-        $file_name = $request->file($name)->getClientOriginalName();
-        $request->file($name)->storeAs('uploadeI/',$folder.'/'.$file_name,'certificate');
+        return $fileName;
     }
-
 }

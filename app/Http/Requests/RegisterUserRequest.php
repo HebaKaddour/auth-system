@@ -25,17 +25,11 @@ class RegisterUserRequest extends FormRequest
 
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|numeric|unique:users',
-            'name' => 'required|string|max:255|unique:users',
-            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'certificate' => 'required|file|mimes:pdf|max:2048',
+            'name' => 'required|string|max:255|',
+            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048|unique:users',
+            'certificate' => 'required|file|mimes:pdf|max:2048|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ];
     }
 
-    public function messages()
-    {
-        return [
-
-        ];
-    }
 }

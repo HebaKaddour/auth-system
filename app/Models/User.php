@@ -26,8 +26,6 @@ class User extends Authenticatable
         'profile_photo',
         'last_used_at',
         'email_verified_at'
-       // 'verification_code',
-        //'verification_code_expires_at',
 
     ];
 

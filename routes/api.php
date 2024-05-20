@@ -1,8 +1,7 @@
 <?php
-use App\Enums\TokenAbility;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\UserAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +18,7 @@ use App\Http\Controllers\Api\UserAuthController;
   //  return $request->user();
 //});
 
-Route::post('register',[UserAuthController::class,'register']);
-Route::post('login',[UserAuthController::class,'login'])->name('login');
-Route::post('logout',[UserAuthController::class,'logout'])->middleware('auth:sanctum');
-
-Route::middleware('auth:sanctum', 'ability:' . TokenAbility::ISSUE_ACCESS_TOKEN->value)->group(function () {
-    Route::post('refresh-token', [UserAuthController::class, 'refreshToken']);
+$api_path = '/Api/';
+Route::prefix('api')->group(function () use ($api_path){
+include __DIR__ . "{$api_path}auth.php";
 });

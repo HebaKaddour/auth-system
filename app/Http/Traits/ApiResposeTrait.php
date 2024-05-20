@@ -3,18 +3,13 @@
 namespace App\Http\Traits;
 
 trait ApiResposeTrait
-{
-    public function ApiResponse($data=null,$message=null,$status=null){
+{public function successResponse($data, $message, $code) {
+    return response()->json(['data' => $data, 'message' => $message], $code);
+}
 
-        //$msg = ["ok"];
-        $array = [
-             'data'=> $data,
-             'message'=>$message,
-             'status'=>$status
-        ];
-        return response($array,$status);
-
-    }
+public function errorResponse($message ,$code) {
+    return response()->json(['message' => $message], $code);
+}
 
 
 }
