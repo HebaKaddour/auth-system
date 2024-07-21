@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Traits;
+namespace App\Traits;
 
 trait ApiResposeTrait
 {public function successResponse($data, $message, $code) {

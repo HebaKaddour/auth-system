@@ -3,7 +3,7 @@
 namespace App\Exceptions;
 use Throwable;
 use Illuminate\Http\JsonResponse;
-use App\Http\Traits\ApiResposeTrait;
+use App\Traits\ApiResposeTrait;
 use Illuminate\Database\QueryException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
@@ -64,11 +64,21 @@ class Handler extends ExceptionHandler
             return $this->errorResponse('Resource not found', 404);
         }
         if ($exception instanceof ValidationException) {
-            $errors = $exception->validator->errors()->toArray();
-            return $this->errorResponse($errors, 422);
+            $errors = $exception->validator->errors()->messages();
+
+            $formattedErrors = [];
+            foreach ($errors as $field => $messages) {
+                $formattedErrors[$field] = array_values($messages)[0];
+            }
+
+            $response = [
+                'message' => 'Validation failed.', // Customize message if needed
+                'errors' => $formattedErrors,
+            ];
+            return $this->errorResponse($response, 422);
         }
         if ($exception instanceof UniqueConstraintViolationException) {
-            $message = 'The the profile photo or certificate already exists. Please select others';
+            $message = 'The the profile photo or certificate already exists Please select others';
             $errors = $exception->getMessage();
             return $this->errorResponse($message, 422);
 

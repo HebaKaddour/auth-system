@@ -16,10 +16,11 @@ class verifymail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private string $code, private string $link)
+    protected $code;
+    public function __construct($code,)
     {
         $this->code = $code;
-        $this->link = $link;
+     //   $this->user = $user;
     }
 
     /**
@@ -39,7 +40,7 @@ class verifymail extends Mailable
     {
         return new Content(
             view: 'emails.verification',
-      with: ['code' => $this->code, 'link' => $this->link]
+      with: ['code' => $this->code ]
         );
     }
 

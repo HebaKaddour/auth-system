@@ -34,15 +34,7 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
             'throw' => false,
-        ],
-        'photos' => [
-            'driver' => 'local',
-            'root' => public_path('photos'),
-        ],
-
-        'certificate' => [
-            'driver' => 'local',
-            'root' => public_path('certificate'),
+            'visibility' => 'public',
         ],
 
         'public' => [
@@ -53,7 +45,26 @@ return [
             'throw' => false,
         ],
 
+        'photos' => [
+            'driver' => 'local',
+            'root' => public_path('photos'),
+            'url' => env('APP_URL').'/photos',
+            'visibility' => 'public',
+        ],
 
+        'certificates' => [
+            'driver' => 'local',
+            'root' => public_path('certificates'),
+            'url' => env('APP_URL').'/certificates',
+            'visibility' => 'public',
+        ],
+
+        'uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+            'url' => env('APP_URL').'/uploads',
+            'visibility' => 'public',
+        ],
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

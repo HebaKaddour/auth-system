@@ -27,19 +27,5 @@ class LoginUserRequest extends FormRequest
             'password' => 'required|string|min:8|',
         ];
     }
-    public function messages()
-    {
-        return [
-            'email.required' => 'The email field is required.',
-            'email.email' => 'Please enter a valid email address.',
-            'email.unique' => 'The email address is already in use.',
-            'password.required' => 'The password field is required.',
-            'password.string' => 'The password field must be a string.',
-            'password.min' => 'The password must be at least 8 characters long.',
-            'password.confirmed' => 'The password confirmation does not match.',
-            'phone_number.required' => 'The phone number field is required.',
-            'phone_number.unique' => 'The phonenumber is already in use.',
-        ];
-    }
 
 }

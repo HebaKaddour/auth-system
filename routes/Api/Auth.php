@@ -17,7 +17,8 @@ Route::controller(UserAuthController::class)
     Route::middleware('auth:sanctum', 'ability:' . TokenAbility::ISSUE_ACCESS_TOKEN->value)->group(function () {
         Route::post('refresh-token','refreshToken')->name('auth.refresh-token');
     });
-
-
+    Route::post('/delete/{id}','delete')->name('auth.delete');
+    Route::post('/verify','verify')->name('auth.verify');
+    Route::post('/resend-code','resendVerificationCode')->middleware('throttle:1,3')->name('auth.resend-code');
 });
 
